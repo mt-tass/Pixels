@@ -2,7 +2,7 @@
 #define BLOCKS_HEADER
 
 #include <opencv4/opencv2/opencv.hpp>
-#include <vector>
+
 
 //Live Video Block
 class getVideo{
@@ -14,7 +14,7 @@ class getVideo{
         ~getVideo();
         cv::Mat getFrame();
         void release();
-        void isOpened();
+        bool isOpened();
 
 };
 //Light Detection Block
