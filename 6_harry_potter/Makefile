@@ -2,7 +2,7 @@
 CC = g++
 
 # Defining the name of the object that will be created after using make
-PROJECT = expecto_patronus
+PROJECT = harry_potter_world
 
 #defining source files
 SRC = main.cpp $(wildcard src/*.cpp)
