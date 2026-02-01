@@ -442,10 +442,15 @@ void QuidditchGame::update(){
             missed++;
         }
     }
-    snitches.erase(
-        std::remove_if(snitches.begin(),snitches.end(),[this](const GoldenSnitch& s) { return !s.active && s.position.y > this->frameHeight + 100; }),
-        snitches.end()
-    );
+    for (auto it = snitches.begin() ; it != snitches.end() ; ){
+        if(!(it->active) && it->position.y > frameHeight+50){
+            it = snitches.erase(it);
+        }
+        else{
+            it++;
+        }
+
+    }
 }
 
 void QuidditchGame::draw(cv::Mat &frame){
