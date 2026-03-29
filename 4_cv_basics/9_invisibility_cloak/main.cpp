@@ -22,7 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
 #include <opencv2/opencv.hpp>
 #include "invisibility_cloak.hpp"
 
@@ -38,7 +39,7 @@ int main()
     cout << "3. Step out of frame\n";
     cout << "4. Press 'B' to capture the background\n";
     cout << "5. Step back with the cloth and disappear!\n";
-    cout << "Press 'R' to reset, 'ESC' to quit.\n\n";
+    cout << "Press 'R' to reset, 'Q' to quit.\n\n";
 
     cv::Mat frame;
     video.read(frame);
@@ -80,14 +81,14 @@ int main()
             drawCalibrationRect(display, calibRect);
         }
 
-        putText(display, "[SPACE] Calibrate  [B] Background  [R] Reset  [ESC] Quit", display.rows-15, cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(200, 220, 230), 1);
+        putText(display, "[SPACE] Calibrate  [B] Background  [R] Reset  [Q] Quit", display.rows-15, cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(200, 220, 230), 1);
 
         cv::namedWindow("Invisibility Cloak", cv::WINDOW_NORMAL);
         cv::resizeWindow("Invisibility Cloak", 640, 480);
         cv::imshow("Invisibility Cloak", display);
 
         int key = cv::waitKey(10);
-        if (key == 27){           //ESC
+        if (key == 'q' || key == 'Q'){
             break;
         }
         else if (key == 32 && !calibrated){                          //SPACE
